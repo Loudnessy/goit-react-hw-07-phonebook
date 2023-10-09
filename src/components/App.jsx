@@ -11,14 +11,10 @@ import { useSelector } from "react-redux";
 import { useEffect } from "react";
 import { fetchContacts } from "api/api";
 export const App = () => {
-// const [contacts, setContacts] = useState([])
-// const [filter, setFilter] = useState('')
 const dispatch = useDispatch();
 useEffect(() => {
     dispatch(fetchContacts())
-}, [dispatch])
-
-
+}, [dispatch, ])
 const onSubmitContact = evt => {
     evt.preventDefault()
     submit(evt, dispatch)
@@ -28,13 +24,11 @@ const onChangeInput = evt => {
 }
 const contacts = useSelector(state => state.contacts.items)
 const filter = useSelector(state => state.filter)
-// console.log(contacts);
 const filterByName = () => {
      return contacts.filter(contact => contact.name.toUpperCase().includes(filter.toUpperCase()))      
 }
 const deletingContact = evt => {
     dispatch(deleteContact(evt.target.id))
-    // localStorage.setItem("contacts", JSON.stringify(newObj));
 }
     return <StyledDiv>
         <h1>Phonebook</h1>
